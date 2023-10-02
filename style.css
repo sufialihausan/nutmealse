@@ -47,7 +47,7 @@ html{
   background-size: cover;
   /* color: azure; */
   overflow: hidden;
-  background-image: url("/images/back.jpg"), linear-gradient(rgba(0, 0, 0, 0.644),rgba(0, 0, 0, 0.644));
+  background: url("/images/back.jpg"), linear-gradient(rgba(0, 0, 0, 0.644),rgba(0, 0, 0, 0.644));
   background-blend-mode: overlay;
 }
 .back2{
