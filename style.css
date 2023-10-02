@@ -47,7 +47,7 @@ html{
   background-size: cover;
   /* color: azure; */
   overflow: hidden;
-  background: url("images/back.jpg"), linear-gradient(rgba(0, 0, 0, 0.644),rgba(0, 0, 0, 0.644));
+  background: url("./images/back.jpg"), linear-gradient(rgba(0, 0, 0, 0.644),rgba(0, 0, 0, 0.644));
   background-blend-mode: overlay;
 }
 .back2{
@@ -60,7 +60,7 @@ html{
   position: relative;
   background-size: cover;
   overflow: hidden;
-  background: url("images/category4.png");
+  background: url("./images/category4.png");
 }
 @media only screen and (max-width: 900px){
   .textsec .contents{
