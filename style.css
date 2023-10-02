@@ -60,7 +60,7 @@ html{
   position: relative;
   background-size: cover;
   overflow: hidden;
-  background-image: url("/images/category4.png");
+  background: url("/images/category4.png");
 }
 @media only screen and (max-width: 900px){
   .textsec .contents{
