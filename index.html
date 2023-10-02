@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutmeals</title>
+    <!-- link for bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css"/>
+    <!-- link for fa fa icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.css" integrity="sha512-otONSJGv1l0LjJXcgyqi2MeKXtnthkiXAleeQjFJOKYcVD5u+mOuPb7xCnlsb74Ld+N0ONbP7KYRmW2/OWrvaA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.anima li button:after {
+  position: absolute;
+  content: "";
+  width: 2px;
+  height: 50%;
+  right: 0;
+  background: black;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+/* work section */
+.work-container{
+  max-width: 90vw;
+  margin:2rem auto;
+}
+.work-item__img{
+  width: 100%;
+  height: 100%;
+  display: block; 
+  transition: all 1s linear;
+  opacity: 1;
+}
+
+.work-item{
+  background: linear-gradient(rgba(0,0,0.1,0.7), #7c39b2);
+  overflow: hidden;
+  border-radius: 15px;
+  position: relative;
+}
+.work-item:hover .work-item__img{
+  opacity:0.5; 
+  transform: scale(1.2);
+}
+.work-item__icon{
+  position: absolute;
+  color: orange;
+  top: 50%;
+  left: 50%;
+  display: inline-block;
+  font-size: 4rem;
+  text-decoration: none;
+  transition: all 0.5s ease;
+  transform: scale(0);
+}
+.work-item:hover .work-item__icon{
+  transform: scale(1.3) translate(-50%,-50%)
+}
+.work-item__icon:hover{
+  color: black;
+  cursor: pointer;
+}
+@media screen and (max-width:920px){
+  .work-container{
+    grid-gap: 2rem;
+    display: grid;
+  }
+}
+@media screen and (min-width:576px){
+  .work-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+  }
+}
+@media screen and (min-width:992px){
+.work-container{
+  height: 100vh;
+  grid-template-columns: repeat(4,1fr);
+  grid-template-rows: repeat(4,1fr);
+  grid-template-areas: 
+  "one one two three"
+  "one one four four"
+  "five six seven seven"
+  "eight nine seven seven"
+}
+.item-1{
+  grid-area: one;
+}
+.item-2{
+  grid-area: two;
+}
+.item-3{
+  grid-area: three;
+}
+.item-4{
+  grid-area: four;
+}
+.item-5{
+  grid-area: five;
+}
+.item-6{
+  grid-area: six;
+}
+.item-7{
+  grid-area: seven;
+}
+.item-8{
+  grid-area: eight;
+}
+.item-9{
+  grid-area: nine;
+}
+
+}
+/* modal */
+
+.work-modal{
+  display: none;
+}
+
+.work-modal--show{
+  position: fixed;
+  background: rgba(0,0,0,0.5);
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 999;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+/* .work-modal__item{
+  background: url("images/back.jpg")center/cover;
+  height: 70vh;
+  width: 80vw;
+  border:0.5rem solid orange;
+  border-radius: 0.4rem;
+} */
+@media screen and (min-width:768px){
+  .work-modal__item{
+    height: 80vh;
+    width: 60vw;
+  }
+}
+.work-modal__close{
+  position: fixed;
+  font-size: 3rem;
+  color: orange;
+  bottom: 5%;
+  right: 5%;
+  transition: color 0.5s linear;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+/* .work-modal__close:hover{
+  color: red;
+} */
+  .work-item__icon button{
+  border-radius: 18px;
+  display: flex;
+  /* box-sizing: border-box; */
+  width: 100px;
+  height: 25px;
+  font-size: medium;
+  text-align: center;
+  justify-content: center;
+  background: orange;
+}
+.work-item__icon button:hover{
+  color: white;
+  background: black;
+}
+.categoryhesd{
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 20px;
+  border-bottom: .1rem solid orange;
+  padding: 10px;
+}
+</style>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  </head>
+<body>
+  <!-- navbar start-->
+    <nav class=" navbar navbar-expand-lg navbar-light bg-light header" id="nav-bar">
+        <a class="navbar-brand" href="index.html"><img class="logo" src="images/navlogo.png" width="140px" height="30px"></a>
+          <div class="collapse navbar-collapse bvc d-none d-lg-block content" id="navbarNav">
+            <ul class="navbar-nav navcontent links m-auto">
+              <li class="nav-item">
+                <a class="" href="abouts.html">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="" href="product_by_category.html" id="navbarDropdown" aria-expanded="false">Shop</a>
+              </li>
+              <li class="nav-item">
+                <a class="" href="blog.html" tabindex="-1" aria-disabled="true">Blog</a>
+              </li>
+            </ul>
+        </div>
+        <ul class="nav icon">
+            <li class="nav-item">
+              <a href="contact.html" class="nav-link text-dark h2">
+                  <i class="fa fa-phone"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link text-dark h2">
+                  <i class="fa fa-facebook-f"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link text-dark h2">
+                  <i class="fa fa-instagram"></i>
+              </a>
+            </li>
+            <li  class="nav-item pt-3 txt" >
+              <input type="search" placeholder="Type here to search">
+            </li>
+            <li class="nav-item d-none d-lg-block">
+              <a href="#" class="nav-link text-dark h2 bt">
+                  <i class="fa fa-search"></i>
+              </a>
+          </li> 
+        </ul>
+      </nav>
+      <!-- end of nav -->
+      <div class="anima container-fluid bg-warning panel " >
+              <li class="nav-item dropdown">
+                <button class="dropbtn text-dark">Category</button>
+                <div class="dropdown-content">
+                  <a href="nuts.html">Nuts</a>
+                  <a href="seeds.html">Seeds</a>
+                  <a href="milets.html">Milets</a>
+                  <a href="driedfruit.html">Dried Fruit</a>
+                  <a href="energybar.html">Energy Bar</a>
+                  <a href="spreads.html">Spreads</a>
+                  <a href="gifts.html">Gifts</a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <button class="dropbtn text-dark">Best Sellers</button>
+                <div class="dropdown-content">
+                  
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <button class="dropbtn text-dark">Combo Deals</button>
+                <div class="dropdown-content">
+                  
+                </div>
+              </li>
+          </div>
+    
+      <!-- bg image -->
+      <div class="back">
+        <div class="row con container">
+          <div class="col-lg-7 col-sm-12 col-md-12 imgsec">
+            <img src="images/homeimage.png" class="feature-img img-fluid">
+          </div>
+          <div class="col-lg-5 col-sm-12 col-md-12 textsec">
+            <div class="contents">
+              <h3 class="anim">NUTMEALS:</h3>
+              <h3 class="qwe anim">NOURISHING YOUR HEALTH,</h3>
+              <h3 class="qwe anim">ONE BITE AT A TIME</h3>
+              <p  class="anim">Welcome to NutMeals, where each bite is a step towords a<br> healther you Explore our premium dried fruit and nuts for a <br> delicious journey to wellness. </p>
+              <button  type="button" style="border-radius: 30px; font-weight: bold;" class="btn btn-outline-warning anim">Discover Nutmeals!</button>
+              <button  type="button" style="border-radius: 30px;" class="btn boton anim">Buy DryFruits</button>
+            </div>
+          </div> 
+        </div>
+      </div>
+
+      <!-- shop by Category -->
+<div class="back2">
+      <section class="work section-padding " id="work">
+        <!-- section title -->
+        <div class="section-title section-title--left">
+          <h1 class="categoryhesd">SHOP BY CATEGORY</h1>
+          <div class="section-title__underline"></div>
+    
+        </div>
+        <!-- end of section title -->
+        <div class="work-container">
+          <!-- single work item -->
+          <article class="work-item item-1">
+            <img src="images/shopcategory9.jpg" alt="" class="work-item__img">
+            <a href="#" class="work-item__icon" data-id="1">
+              <img src="images/energy bar.png" style="width: 90px; height: 90px; margin-bottom: 20px;">
+              <button>Order Now</button>
+            </a>
+          </article>
+          <!-- end single work item -->
+          <!-- single work item -->
+          <article class="work-item item-2">
+            <img src="images/shopcategory10.jpg" alt="" class="work-item__img">
+            <a href="#" class="work-item__icon" data-id="2">
+              <img src="images/seeds.png" style="width: 70px; height: 70px;">
+              <button>Order Now</button>
+            </a>
+          </article>
+          <!-- end single work item -->
+          <!-- single work item -->
+          <article class="work-item item-3">
+            <img src="images/shopcategory3.jpg" alt="" class="work-item__img">
+            <a href="#" class="work-item__icon" data-id="3">
+              <img src="images/energy bar.png" style="width: 70px; height: 70px;">
+              <button>Order Now</button>
+            </a>
+          </article>
+          <!-- end single work item -->
+          <!-- single work item -->
+          <article class="work-item item-4">
+            <img src="images/shopcategory4.jpg" alt="" class="work-item__img">
+            <a href="#" class="work-item__icon" data-id="4">
+              <img src="images/energy bar.png" style="width: 70px; height: 70px;">
+              <button>Order Now</button>
+            </a>
+          </article>
+          <!-- end single work item -->
+          <!-- single work item -->
+          <article class="work-item item-5">
+            <img src="images/shopcategory8.jpg" alt="" class="work-item__img">
+            <a href="#" class="work-item__icon" data-id="5">
+              <img src="images/energy bar.png" style="width: 70px; height: 70px;">
+              <button>Order Now</button>
+            </a>
+          </article>
+          <!-- end single work item -->
+          <!-- single work item -->
+          <article class="work-item item-6">
+            <img src="images/shopcategory1.jpg" alt="" class="work-item__img">
+            <a href="#" class="work-item__icon" data-id="6">
+              <img src="images/nuts.png" style="width: 70px; height: 70px;">
+              <button>Order Now</button>
+            </a>
+          </article>
+          <!-- end single work item -->
+          <!-- single work item -->
+          <article class="work-item item-7">
+            <img src="images/shopcategory5.jpeg" alt="" class="work-item__img">
+            <a href="#" class="work-item__icon" data-id="7">
+              <img src="images/nuts.png" style="width: 80px; height: 80px; margin-bottom: 20px;">
+              <button>Order Now</button>
+            </a>
+          </article>
+          <!-- end single work item -->
+          <!-- single work item -->
+          <article class="work-item item-8">
+            <img src="images/shopcategory6.jpg" alt="" class="work-item__img">
+            <a href="#" class="work-item__icon" data-id="8">
+              <img src="images/spreads.png" style="width: 60px; height: 60px;">
+              <button>Order Now</button>
+            </a>
+          </article>
+          <!-- end single work item -->
+          <!-- single work item -->
+          <article class="work-item item-9">
+            <img src="images/shopcategory3.jpg" alt="" class="work-item__img">
+            <a href="#" class="work-item__icon" data-id="9">
+              <img src="images/dried fruits.png" style="width: 60px; height: 60px;">
+              <button>Order Now</button>
+            </a>
+          </article>
+          <!-- end single work item -->
+        </div>
+        <!-- modal -->
+        <div class="work-modal">
+          <div class="work-modal__item"></div>
+          <div class="work-modal__close">
+            <i class="fas fa-window-close"></i>
+          </div>
+        </div>
+      </section>
+    </div>
+      <!-- end of work -->
+    
+
+       <!-- <section class="shop-cards" data-aos="fade-up" data-aos-duration="1500">
+        <div class="shophead">
+          <h3>SHOP BY CATEGORY</h3>
+        </div>
+        <div class="shop-cards-content">
+            <div class="row">
+                <img  src="images/shopcategory9.jpg" alt="">
+                <div class="layeres">
+                  <img src="images/energy bar.png" style="width: 90px; height: 90px;">
+                    <h3>GIFTS</h3>
+                    <button>Order Now</button>
+                </div>
+            </div>
+            <div class="row">
+                <img src="images/shopcategory10.jpg" alt="">
+                <div class="layeres">
+                  <img src="images/dried fruits.png" style="width: 90px; height: 90px;">
+                    <h3>SEEDS</h3>
+                    <button>Order Now</button>
+                </div>
+            </div>
+            <div class="row">
+                <img src="images/shopcategory3.jpg" alt="">
+                <div class="layeres">
+                  <img src="images/seeds.png" style="width: 90px; height: 90px;">
+                    <h3>DRIED FRUIT</h3>
+                    <button>Order Now</button>
+                </div>
+            </div>
+            <div class="row">
+                <img src="images/shopcategory4.jpg" alt="">
+                <div class="layeres">
+                  <img src="images/seeds.png" style="width: 90px; height: 90px;">
+                    <h3>SEEDS</h3>
+                    <button>Order Now</button>
+                </div>
+            </div>
+            <div class="row">
+                <img src="images/shopcategory5.jpeg" alt="">
+                <div class="layeres">
+                  <img src="images/energy bar.png" style="width: 90px; height: 90px;">
+                    <h3>GIFTS</h3>
+                    <button>Order Now</button>
+                </div>
+            </div>
+            <div class="row">
+              <img src="images/shopcategory6.jpg" alt="">
+              <div class="layeres">
+                <img src="images/energy bar.png" style="width: 90px; height: 90px;">
+                  <h3>ENERGY BAR</h3>
+                  <button>Order Now</button>
+              </div>
+            </div>
+            <div class="row">
+              <img src="images/shopcategory7.jpg" alt="">
+              <div class="layeres">
+                <img src="images/ethnic beverages.png" style="width: 90px; height: 90px;">
+                  <h3>ETHINIC BEVERAGES</h3>
+                  <button>Order Now</button>
+              </div>
+            </div>
+            <div class="row imgsc">
+              <img src="images/shopcategory8.jpg" alt="">
+              <div class="layeres">
+                <img src="images/energy bar.png" style="width: 90px; height: 90px;">
+                  <h3>Energy BAR</h3>
+                  <button>Order Now</button>
+              </div>
+            </div>
+        </div>
+      </section> -->
+      
+
+<div class="container-fluid" data-aos="fade-up" data-aos-duration="1500">
+  <div class="row portfolio">
+    <div class="col-lg-3 contenth3">
+      <h1>OUR<BR>PORTFOLIO</h1>
+    </div>
+    <div class="col contentimg1">
+      <img src="images/portfolio.png" class="img-fluid">
+    </div>
+  </div>
+</div>
+
+<!-- grid item -->
+
+<div  class="container-fluid" data-aos="fade-up" data-aos-duration="1500">
+  <div class="row ">
+      <div class="col-lg-12 bestsellers">
+        <div class="arrival" >
+         <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link text-dark active" style="font-weight: bold;" id="buy-tab" data-bs-toggle="tab" data-bs-target="#buy" type="button" role="tab" aria-controls="buy" aria-selected="true">BEST SELLERS</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link text-dark" style="font-weight: bold;" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="false">NEW ARRIVAL</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link text-dark" style="font-weight: bold;" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">TOP RATED</button>
+            </li>
+          </ul>
+        
+        <div class="tab-content">
+          <div class=" tab-pane active top-2" id="buy" role="tabpanel" aria-labelledby="buy-tab">
+            <div class="contentproduct">
+              <img src="images/sellers-removebg-preview.png" class="img-fluid" style="width: 150px; height: 200px;">
+              <p class="product-text">Premium Cashew</p>
+              <select name="topic" id="topic" class="productgm">
+                <option value="" selected="selected">100gm</option>
+                <option value="" selected="selected">200gm</option>
+                <option value="" selected="selected">500gm</option>
+              </select>
+              <p class="product-text" style=" font-weight: bold;">Rs. 149.00 <span style=" text-decoration: line-through; color: red;">Rs. 299.00</span></p>
+              <div class="hexsec">
+                <a href="#"><img src="images/heart.png" alt="" style="width: 38px; height: 38px;"></a>
+                <button  type="button" style=" background: rgba(179, 195, 245, 0.865);" class="btn-outline-danger botonsq">Add to Basket</button>
+              </div>
+              
+            </div>
+            <div class="contentproduct" style="background: #f4bddc">
+              <img src="images/sellers-removebg-preview.png" class="img-fluid" style="width: 150px; height: 200px;">
+              <p class="product-text">Premium Cashew</p>
+              <select name="topic" id="topic" class="productgm" style="background: #f4bddc">
+                <option value="" selected="selected">100gm</option>
+                <option value="" selected="selected">200gm</option>
+                <option value="" selected="selected">500gm</option>
+              </select>
+              <p class="product-text" style=" font-weight: bold;">Rs. 149.00 <span style=" text-decoration: line-through; color: red;">Rs. 299.00</span></p>
+              <div class="hexsec">
+                <a href="#"><img src="images/heart.png" alt="" style="width: 38px; height: 38px;"></a>
+                <button  type="button" style=" background: #f4bddc;" class="btn-outline-danger botonsq">Add to Basket</button>
+              </div>
+            </div>
+            <div class="contentproduct" style="background: #b3d5bd;">
+              <img src="images/sellers-removebg-preview.png" class="img-fluid" style="width: 150px; height: 200px;">
+              <p class="product-text">Premium Cashew</p>
+              <select name="topic" id="topic" class="productgm" style="background-color: #b3d5bd;">
+                <option value="" selected="selected">100gm</option>
+                <option value="" selected="selected">200gm</option>
+                <option value="" selected="selected">500gm</option>
+              </select>
+              <p class="product-text" style=" font-weight: bold;">Rs. 149.00 <span style=" text-decoration: line-through; color: red;">Rs. 299.00</span></p>
+              <div class="hexsec">
+                <a href="#"><img src="images/heart.png" alt="" style="width: 38px; height: 38px;"></a>
+                <button  type="button" style=" background: #b3d5bd;" class="btn-outline-danger botonsq">Add to Basket</button>
+              </div>
+            </div>
+            <div class="contentproduct">
+              <img src="images/sellers-removebg-preview.png" class="img-fluid" style="width: 150px; height: 200px;">
+              <p class="product-text">Premium Cashew</p>
+              <select name="topic" id="topic" class="productgm">
+                <option value="" selected="selected">100gm</option>
+                <option value="" selected="selected">200gm</option>
+                <option value="" selected="selected">500gm</option>
+              </select>
+              <p class="product-text" style=" font-weight: bold;">Rs. 149.00 <span style=" text-decoration: line-through; color: red;">Rs. 299.00</span></p>
+              <div class="hexsec">
+                <a href="#"><img src="images/heart.png" alt="" style="width: 38px; height: 38px;"></a>
+                <button  type="button" style=" background: rgba(179, 195, 245, 0.865);" class="btn-outline-danger botonsq">Add to Basket</button>
+              </div>
+            </div> 
+         </div>
+
+          <div class="tab-pane" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <div class="contentproduct">
+              <img src="images/profileimg.png" class="img-fluid" style="width: 150px; height: 200px;">
+              <p class="product-text">Premium Cashew</p>
+              <select name="topic" id="topic" class="productgm">
+                <option value="" selected="selected">100gm</option>
+                <option value="" selected="selected">200gm</option>
+                <option value="" selected="selected">500gm</option>
+              </select>
+              <p class="product-text" style=" font-weight: bold;">Rs. 149.00 <span style=" text-decoration: line-through; color: red;">Rs. 299.00</span></p>
+              <div class="hexsec">
+                <a href="#"><img src="images/heart.png" alt="" style="width: 38px; height: 38px;"></a>
+                <button  type="button" style=" background: rgba(179, 195, 245, 0.865);" class="btn-outline-danger botonsq">Add to Basket</button>
+              </div>
+            </div>
+            <div class="contentproduct" style="background: #f4bddc">
+              <img src="images/profileimg.png" class="img-fluid" style="width: 150px; height: 200px;">
+              <p class="product-text">Premium Cashew</p>
+              <select name="topic" id="topic" class="productgm" style="background: #f4bddc">
+                <option value="" selected="selected">100gm</option>
+                <option value="" selected="selected">200gm</option>
+                <option value="" selected="selected">500gm</option>
+              </select>
+              <p class="product-text" style=" font-weight: bold;">Rs. 149.00 <span style=" text-decoration: line-through; color: red;">Rs. 299.00</span></p>
+              <div class="hexsec">
+                <a href="#"><img src="images/heart.png" alt="" style="width: 38px; height: 38px;"></a>
+                <button  type="button" style=" background: #f4bddc;" class="btn-outline-danger botonsq">Add to Basket</button>
+              </div>
+            </div>
+            <div class="contentproduct" style="background: #b3d5bd;">
+              <img src="images/profileimg.png" class="img-fluid" style="width: 150px; height: 200px;">
+              <p class="product-text">Premium Cashew</p>
+              <select name="topic" id="topic" class="productgm" style="background-color: #b3d5bd;">
+                <option value="" selected="selected">100gm</option>
+                <option value="" selected="selected">200gm</option>
+                <option value="" selected="selected">500gm</option>
+              </select>
+              <p class="product-text" style=" font-weight: bold;">Rs. 149.00 <span style=" text-decoration: line-through; color: red;">Rs. 299.00</span></p>
+              <div class="hexsec">
+                <a href="#"><img src="images/heart.png" alt="" style="width: 38px; height: 38px;"></a>
+                <button  type="button" style=" background: #b3d5bd;" class="btn-outline-danger botonsq">Add to Basket</button>
+              </div>
+            </div>
+            <div class="contentproduct">
+              <img src="images/profileimg.png" class="img-fluid" style="width: 150px; height: 200px;">
+              <p class="product-text">Premium Cashew</p>
+              <select name="topic" id="topic" class="productgm" >
+                <option value="" selected="selected">100gm</option>
+                <option value="" selected="selected">200gm</option>
+                <option value="" selected="selected">500gm</option>
+              </select>
+              <p class="product-text" style=" font-weight: bold;">Rs. 149.00 <span style=" text-decoration: line-through; color: red;">Rs. 299.00</span></p>
+              <div class="hexsec">
+                <a href="#"><img src="images/heart.png" alt="" style="width: 38px; height: 38px;"></a>
+                <button  type="button" style=" background: rgba(179, 195, 245, 0.865);" class="btn-outline-danger botonsq">Add to Basket</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="contentproduct">
+              <img src="images/homeproductimg.png" class="img-fluid" style="width: 170px; height: 200px;">
+              <p class="product-text">Premium Cashew</p>
+              <select name="topic" id="topic" class="productgm">
+                <option value="" selected="selected">100gm</option>
+                <option value="" selected="selected">200gm</option>
+                <option value="" selected="selected">500gm</option>
+              </select>
+              <p class="product-text" style="font-weight: bold;">Rs. 149.00 <span style=" text-decoration: line-through; color: red;">Rs. 299.00</span></p>
+              <div class="hexsec">
+                <a href="#"><img src="images/heart.png" alt="" style="width: 38px; height: 38px;"></a>
+                <button  type="button" style=" background: rgba(179, 195, 245, 0.865);" class="btn-outline-danger botonsq">Add to Basket</button>
+              </div>
+            </div>
+            <div class="contentproduct" style="background: #f4bddc">
+              <img src="images/homeproductimg.png" class="img-fluid" style="width: 170px; height: 200px;">
+              <p class="product-text">Premium Cashew</p>
+              <select name="topic" id="topic" class="productgm" style="background: #f4bddc">
+                <option value="" selected="selected">100gm</option>
+                <option value="" selected="selected">200gm</option>
+                <option value="" selected="selected">500gm</option>
+              </select>
+              <p class="product-text" style="font-weight: bold;">Rs. 149.00 <span style=" text-decoration: line-through; color: red;">Rs. 299.00</span></p>
+              <div class="hexsec">
+                <a href="#"><img src="images/heart.png" alt="" style="width: 38px; height: 38px;"></a>
+                <button  type="button" style=" background: #f4bddc;" class="btn-outline-danger botonsq">Add to Basket</button>
+              </div>
+            </div>
+            <div class="contentproduct" style="background: #b3d5bd;">
+              <img src="images/homeproductimg.png" class="img-fluid" style="width: 170px; height: 200px;">
+              <p class="product-text">Premium Cashew</p>
+              <select name="topic" id="topic" class="productgm" style="background-color: #b3d5bd;">
+                <option value="" selected="selected">100gm</option>
+                <option value="" selected="selected">200gm</option>
+                <option value="" selected="selected">500gm</option>
+              </select>
+              <p class="product-text" style="font-weight: bold;">Rs. 149.00 <span style=" text-decoration: line-through; color: red;">Rs. 299.00</span></p>
+              <div class="hexsec">
+                <a href="#"><img src="images/heart.png" alt="" style="width: 38px; height: 38px;"></a>
+                <button  type="button" style=" background: #b3d5bd;" class="btn-outline-danger botonsq">Add to Basket</button>
+              </div>
+            </div>
+            <div class="contentproduct">
+              <img src="images/homeproductimg.png" class="img-fluid" style="width: 170px; height: 200px;">
+              <p class="product-text">Premium Cashew</p>
+              <select name="topic" id="topic" class="productgm">
+                <option value="" selected="selected">100gm</option>
+                <option value="" selected="selected">200gm</option>
+                <option value="" selected="selected">500gm</option>
+              </select>
+              <p class="product-text" style="font-weight: bold;">Rs. 149.00 <span style=" text-decoration: line-through; color: red;">Rs. 299.00</span></p>
+              <div class="hexsec">
+                <a href="#"><img src="images/heart.png" alt="" style="width: 38px; height: 38px;"></a>
+                <button  type="button" style=" background: rgba(179, 195, 245, 0.865);" class="btn-outline-danger botonsq">Add to Basket</button>
+              </div>
+            </div>
+              
+          </div>
+        </div>
+        <script>
+          var firstTabEl = document.querySelector('#myTab li:last-child a')
+          var firstTab = new bootstrap.Tab(firstTabEl)
+          firstTab.show()
+        </script>
+        </div>
+        </div>
+      </div>
+  </div>
+  <div class="viewmore">
+    <a href="#"><P>View More!</P></a>
+  </div>
+ </div>
+
+
+<!-- footer section start -->
+<section class=" bg-dark text-light" id="footer" >
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <h1>nutmeals</h1>
+        <p>Our desire to change the world, is derived from our impulse to introduce FOOD DIVERSITY to every person based on CULTURE, YEARNING AND CELEBRATION</p>
+        <i class="fa fa-phone-square" style="font-size: 20px;">+91 126786878</i>
+        <p>hellonutmeals@gmail.com</p>
+        <a href="#"><i class="fa fa-twitter-square" style="font-size: 20px; color: white;"></i></a>
+        <a href="#"><i class="fa fa-facebook-square" style="font-size: 20px; color: white;"></i></a>
+        <a href="#"><i class="fa fa-instagram" style="font-size: 20px; color: white;"></i></a>
+        <a href="#"><i class="fa fa-youtube-square" style="font-size: 20px; color: white;"></i></a>
+      </div>
+      <div class="col-lg-4 lkj">
+        <h4>Quick Links</h4>
+        <p><a class="text-light text-decoration-none" href="index.html">Home</a></p>
+        <p><a class="text-light text-decoration-none" href="about.html">About Us</a></p>
+        <p><a class="text-light text-decoration-none" href="shop.html">Product</a></p>
+        <p><a class="text-light text-decoration-none" href="contact.html">Contact Us</a></p>
+      </div>
+      <div class="col-lg-4">
+        <h4>Business hour</h4>
+        <p>Our support available to help you 24 hours a day, seven days week</p>
+        <p>Monday-Saturday: ......................... 10:00-7:30</p>
+        <p>Sunday: ............................. 10:00-02:00</p>
+      </div>
+    </div>
+  </div>
+  </section>
+  <div class="row container-fluid" >
+    <p><p class=" copyright">&copy Copyright 2019-2023 nutmeals. & All Right Reserved</p></p>
+  </div>
+<!-- footer section end -->
+
+    <!-- whatsapp icon -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <a href="https://api.whatsapp.com/send?phone=51955081075&text=Hola%21%20Quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Varela%202." class="float" target="_blank">
+    <i class="fa fa-whatsapp my-float"></i>
+    </a>
+    <!-- mobile view navbar -->
+    <div class="container-fluid btn-group-sm bg-light d-lg-none d-block sticky-top fixed-bottom">
+      <div class="row">
+          <div class="col-sm-12 d-flex justify-content-center">
+              <ul class="nav">
+                  <li class="nav-item">
+                    <a href="index.html" class="nav-link text-dark h2">
+                        <i class="fa fa-home"></i>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="cart.html" class="nav-link text-dark h2">
+                        <i class="fa fa-cart-plus"></i>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="" class="nav-link text-dark h2">
+                        <i class="fa fa-search"></i>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="" class="nav-link text-dark h2">
+                        <i class="fa fa-heart"></i>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="login.html" class="nav-link text-dark h2">
+                        <i class="fa fa-user"></i>
+                    </a>
+                  </li>
+              </ul>
+              <nav class="navbar navbar-expand-sm navbar-light">
+                  <button class="navbar-toggler" data-placement="top" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                  <div class="collapse navbar-collapse" id="nav">
+                      <ul class="navbar-nav m-auto">
+                        <li class="nav-item">
+                          <a class="nav-link active" href="abouts.html">About</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link active" href="product_by_category.html" id="navbarDropdown" aria-expanded="false">Our Product</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link active" href="blog.html" tabindex="-1" aria-disabled="true">Blog</a>
+                        </li>
+                      </ul>
+                  </div>
+              </nav>
+                       
+          </div>
+      </div>
+    </div>
+    
+    <!-- End mobile Navbar -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <!-- hide search btn tab -->
+    <script>
+      $(".txt").hide();
+      $(".bt").click(function(){
+        $(".txt").toggle();
+      });
+    </script>
+
+<!-- for up slider -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.js"></script>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+  </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+</body>
+</html>

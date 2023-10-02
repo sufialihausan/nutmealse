@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <!-- link for bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css"/>
+    <!-- link for fa fa icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    
+    <!-- for scrollup button -->
+    <script type="text/javascript">
+    $(window).scroll(function(){
+    if ($(this).scrollTop() > 100) {
+      $('#myBtn').fadeIn();
+    } else {
+      $('#myBtn').fadeOut();
+    }
+    });
+    $('#myBtn').click(function(){
+    $('html, body').animate({scrollTop : 0},800);
+    return false;
+    });
+    </script> 
+    <style>
+      .bvc ul li a{
+  margin-left: 30px;
+  font-weight: bold;
+}
+    </style> 
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="nav-bar">
+        <a class="navbar-brand" href="index.html"><img class="logo" src="images/navlogo.png" width="140px" height="30px"></a>
+      <div class="collapse navbar-collapse bvc d-none d-lg-block bvc content" id="navbarNav">
+        <ul class="navbar-nav navcontent links m-auto">
+          <li class="nav-item">
+            <a class="" href="abouts.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="" href="product_by_category.html" id="navbarDropdown" aria-expanded="false">Shop</a>
+          </li>
+          <li class="nav-item">
+            <a class="actives" href="blog.html" tabindex="-1" aria-disabled="true">Blog</a>
+          </li>
+        </ul>
+    </div>
+    <ul class="nav icon">
+      <li class="nav-item">
+        <a href="contact.html" class="nav-link text-dark h2">
+            <i class="fa fa-phone"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link text-dark h2">
+            <i class="fa fa-facebook-f"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link text-dark h2">
+            <i class="fa fa-instagram"></i>
+        </a>
+      </li>
+      <li  class="nav-item pt-3 txt" >
+        <input type="search" placeholder="Type here to search">
+      </li>
+      <li class="nav-item d-none d-lg-block">
+        <a href="#" class="nav-link text-dark h2 bt">
+            <i class="fa fa-search"></i>
+        </a>
+    </li> 
+  </ul>
+  </nav>
+  <section class="about" id="about">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="about-img">
+          <img src="images/blog.jpg" alt="">
+      </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="about-text">
+          <h1>Blog</h1>
+          <ul>
+              <li>
+                  <p>Say goodbye to sugary snacks, unhealthy fats, and artificial additives dominating your lunch boxes. Stop settling for products that compromise your health.
+                  </p>
+              </li>
+              <li>
+                  <p>Nutmeals is here to change the game and help you embrace a healthier lifestyle.
+                  </p>
+              </li>
+              <li>
+                  <p>We understand the impact of lifestyle choices and the importance of healthy foods.</p>
+              </li>
+              <li>
+                  <p>We're confident that proper education & guidance can cure, prevent, or balance your health issues.
+                  </p>
+              </li>
+              <li>
+                  <p>With Nutmeals, you can trust that you're consuming only the best.
+                  </p>
+              </li>
+          </ul>
+      </div>
+      </div>
+    </div>
+</section>
+
+<!-- footer section start -->
+<section class=" bg-dark text-light" id="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <h1>nutmeals</h1>
+        <p>Our desire to change the world, is derived from our impulse to introduce FOOD DIVERSITY to every person based on CULTURE, YEARNING AND CELEBRATION</p>
+        <i class="fa fa-phone-square" style="font-size: 20px;">+91 126786878</i>
+        <p>hellonutmeals@gmail.com</p>
+        <a href="#"><i class="fa fa-twitter-square" style="font-size: 20px; color: white;"></i></a>
+              <a href="#"><i class="fa fa-facebook-square" style="font-size: 20px; color: white;"></i></a>
+              <a href="#"><i class="fa fa-instagram" style="font-size: 20px; color: white;"></i></a>
+              <a href="#"><i class="fa fa-youtube-square" style="font-size: 20px; color: white;"></i></a>
+      </div>
+      <div class="col-lg-4 lkj">
+        <h4>Quick Links</h4>
+        <p><a class="text-light text-decoration-none" href="index.html">Home</a></p>
+        <p><a class="text-light text-decoration-none" href="about.html">About Us</a></p>
+        <p><a class="text-light text-decoration-none" href="shop.html">Product</a></p>
+        <p><a class="text-light text-decoration-none" href="contact.html">Contact Us</a></p>
+      </div>
+      <div class="col-lg-4">
+        <h4>Business hour</h4>
+        <p>Our support available to help you 24 hours a day, seven days week</p>
+        <p>Monday-Saturday: ......................... 10:00-7:30</p>
+        <p>Sunday: ............................. 10:00-02:00</p>
+      </div>
+    </div>
+  </div>
+  </section>
+  <div class="row container-fluid">
+    <p><p class=" copyright">&copy Copyright 2019-2023 nutmeals. & All Right Reserved</p></p>
+  </div>
+<!-- footer section end -->
+  <button type="button" id="myBtn"><i class="fa fa-arrow-up" aria-hidden="true"></i></button> <!--- arrow button -->
+
+<!-- whattsapp button -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <a href="https://api.whatsapp.com/send?phone=51955081075&text=Hola%21%20Quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Varela%202." class="float" target="_blank">
+  <i class="fa fa-whatsapp my-float"></i>
+  </a>
+
+  <!-- mobile view nav -->
+<div class="container-fluid btn-group-sm bg-light d-lg-none d-block sticky-top fixed-bottom">
+  <div class="row">
+      <div class="col-sm-12 d-flex justify-content-center">
+          <ul class="nav">
+              <li class="nav-item">
+                <a href="index.html" class="nav-link text-dark h2">
+                    <i class="fa fa-home"></i>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="cart.html" class="nav-link text-dark h2">
+                    <i class="fa fa-cart-plus"></i>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="" class="nav-link text-dark h2">
+                    <i class="fa fa-search"></i>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="" class="nav-link text-dark h2">
+                    <i class="fa fa-heart"></i>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="login.html" class="nav-link text-dark h2">
+                    <i class="fa fa-user"></i>
+                </a>
+              </li>
+          </ul>
+          <nav class="navbar navbar-expand-sm navbar-light">
+              <button class="navbar-toggler" data-placement="top" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+              <div class="collapse navbar-collapse" id="nav">
+                  <ul class="navbar-nav m-auto">
+                    <li class="nav-item">
+                      <a class="nav-link active" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link active" href="shop.html" id="navbarDropdown" aria-expanded="false">Product</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link active" href="blog.html" tabindex="-1" aria-disabled="true">Blog</a>
+                    </li>
+                  </ul>
+              </div>
+          </nav>
+                   
+      </div>
+  </div>
+</div>
+
+  <!-- scrollup hide js -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <!-- hide search btn tab -->
+<script>
+  $(".txt").hide();
+  $(".bt").click(function(){
+    $(".txt").toggle();
+  });
+</script>
+
+<script src="smooth-scroll.js"></script>
+    <script>
+      var scroll = new SmoothScroll('a[href*="#"]');
+    </script>
+  
+  <!-- scroll up js -->
+  <script>
+    const myButton = document.getElementById("myBtn");
+    window.onscroll = function() {scrollFunction()};
+      function scrollFunction() {  
+        if (document.body.scrollTop > 100  || document.documentElement > 100) {
+        mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+ }
+ myButton.addEventListener('click', () =>{
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+ })
+   </script>
+</body>
+</html>
