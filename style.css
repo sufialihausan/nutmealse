@@ -45,9 +45,8 @@ html{
   padding: 10px 10%;
   position: relative;
   background-size: cover;
-  /* color: azure; */
   overflow: hidden;
-  background: url("./images/back.jpg"), linear-gradient(rgba(0, 0, 0, 0.644),rgba(0, 0, 0, 0.644));
+  background-image: url("./images/back.jpg"), linear-gradient(rgba(0, 0, 0, 0.644),rgba(0, 0, 0, 0.644));
   background-blend-mode: overlay;
 }
 .back2{
